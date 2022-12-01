@@ -1,5 +1,6 @@
 # Change Log
 
+- nodejs: refresh config
 - nodejs: delete file without reloading the page
 - nodejs: getting history by a separate request
 - nodejs: setUsers for region protection
