@@ -174,12 +174,15 @@
         var onRequestInsertImage = function(event) {  // the user is trying to insert an image by clicking the Image from Storage button
             docEditor.insertImage({  // insert an image into the file
                 "c": event.data.c,
-                <%- JSON.stringify(dataInsertImage).substring(1, JSON.stringify(dataInsertImage).length - 1)%>
-            })
+                <%- JSON.stringify(dataInsertImage).substring(1, JSON.stringify(dataInsertImage).length - 1) %>
+            });
         };
 
-        var onRequestCompareFile = function() {  // the user is trying to select document for comparing by clicking the Document from Storage button
-            docEditor.setRevisedFile(<%- JSON.stringify(dataCompareFile) %>);  // select a document for comparing
+        var onRequestSelectDocument = function(event) {  // the user is trying to select document for comparing by clicking the Document from Storage button
+            docEditor.setRequestedDocument({  // select a document
+                "c": event.data.c,
+                <%- JSON.stringify(dataSelectDocument).substring(1, JSON.stringify(dataSelectDocument).length - 1) %>
+            });
         };
 
         var onRequestMailMergeRecipients = function (event) {  // the user is trying to select recipients data by clicking the Mail merge button
@@ -273,7 +276,7 @@
             "onMakeActionLink": onMakeActionLink,
             "onMetaChange": onMetaChange,
             "onRequestInsertImage": onRequestInsertImage,
-            "onRequestCompareFile": onRequestCompareFile,
+            "onRequestSelectDocument": onRequestSelectDocument,
             "onRequestMailMergeRecipients": onRequestMailMergeRecipients,
         };
 
