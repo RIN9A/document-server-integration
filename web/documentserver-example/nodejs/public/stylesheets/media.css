@@ -102,6 +102,18 @@
     .tableHeaderCellRemove {
         padding-left: 0px;
     }
+
+    .tableFooter tr {
+        width: 90%;
+    }
+
+    .tableFooterCellRemoveAll {
+        width: 12%;
+    }
+
+    .delete-all {
+        padding: 0;
+    }
 }
 
 @media (max-width: 1008px) {
@@ -279,6 +291,14 @@
     .contentCells-icon {
         width: 3%;
     }
+
+    .tableFooter tr {
+        width: 75%;
+    }
+
+    .tableFooterCellRemoveAll {
+        width: 10%;
+    }
 }
 
 @media (max-width: 890px) and (min-width: 769px ) {
@@ -323,6 +343,14 @@
 
     .tableHeaderCellViewers {
         width: 18%;
+    }
+
+    .tableFooter tr {
+        width: 95%;
+    }
+
+    .tableFooterCellRemoveAll {
+        width: 11%;
     }
 }
 
@@ -685,5 +713,14 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .tableRow td:first-child{
         max-width: none;
+    }
+}
+@media (max-width: 769px){
+    .tableFooter tr {
+        width: 0%;
+    }
+
+    .tableFooterCellRemoveAll {
+        width: 0%;
     }
 }

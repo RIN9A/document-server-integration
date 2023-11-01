@@ -608,6 +608,29 @@ footer table tr td:first-child {
     margin-right: 8px;
 }
 
+.tableFooter {
+    padding-top: 10px;
+}
+
+.tableFooter tr{ 
+    display: flex;
+    height: 40px;
+    justify-content: end;
+    align-self: center;
+}
+
+.tableFooterCellRemoveAll {
+    width: 11%;
+}
+
+.delete-all {
+    display: inline-block;
+    width: min-content;
+    padding: 2px 4px;
+    text-align: center; 
+    cursor: pointer;
+}
+
 .select-user {
     color: #444444;
     font-family: Open Sans;
