@@ -159,6 +159,7 @@ class ConfigurationManager
     {
         return [
             'en' => "English",
+            'ar' => 'Arabic',
             'hy' => 'Armenian',
             'az' => 'Azerbaijani',
             'eu' => 'Basque',

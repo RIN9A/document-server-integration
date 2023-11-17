@@ -121,6 +121,7 @@ class ConfigurationManager:
     def languages(self) -> dict[str, str]:
         return {
             'en': 'English',
+            'ar': 'Arabic',
             'hy': 'Armenian',
             'az': 'Azerbaijani',
             'eu': 'Basque',
