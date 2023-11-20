@@ -57,13 +57,14 @@ fileUtility.getFileType = function getFileType(url) {
     if (supportedFormats[i].name === ext) return supportedFormats[i].type;
   }
 
-  return fileUtility.fileType.word; // the default file type is word
+  return fileUtility.fileType.other; // the default file type is word
 };
 
 fileUtility.fileType = {
   word: 'word',
   cell: 'cell',
   slide: 'slide',
+  other: 'other',
 };
 
 fileUtility.getSuppotredExtensions = function getSuppotredExtensions() {
