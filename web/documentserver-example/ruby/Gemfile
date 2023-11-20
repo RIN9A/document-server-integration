@@ -11,7 +11,7 @@ gem 'jwt', '~> 2.7'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 gem 'rack-cors', '~> 2.0'
 gem 'rails', '~> 7.0.8'
-gem 'rubocop', '~> 1.52', group: :development
+gem 'rubocop', '~> 1.57.0', group: :development
 gem 'sass-rails', '~> 6.0'
 gem 'sdoc', '~> 2.6', group: :doc
 gem 'sorbet-runtime', '~> 0.5.10871'
@@ -22,6 +22,7 @@ gem 'uglifier', '~> 4.2'
 gem 'uuid', '~> 2.3'
 gem 'web-console', '~> 4.2', groups: [:development, :test]
 gem 'webrick', '~> 1.8'
+gem 'rubocop-rails', '~> 2.22.0', group: :development
 
 # Unfortunately, Sorbet only supports Darwin and Linux-based systems.
 # Additionally, it doesn't support Linux on ARM64, which may be used in a Docker
