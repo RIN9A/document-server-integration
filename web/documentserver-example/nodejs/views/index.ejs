@@ -325,14 +325,6 @@
     <script type="text/javascript" src="javascripts/jscript.js"></script>
 
     <script type="text/javascript">
-        var Formats;
-        window.onload = function () {
-            fetch(window.location.href+'formats')
-                .then((response) => response.json())
-                .then((data) => {
-                    Formats = data;
-                })
-        }
         var ConverExtList = "<%= convertExts %>";
         var EditedExtList = "<%= editedExts %>";
         var FilledExtList = "<%= fillExts %>";
