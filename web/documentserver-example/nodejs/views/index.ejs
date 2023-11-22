@@ -307,24 +307,7 @@
             <span class="step-descr">The converting speed depends on file size and additional elements it contains.</span>
             <table cellspacing="0" cellpadding="0" width="100%" class="convertTable">
                 <tbody>
-                    <tr class="typeButtonsRow disable" id="wordTypes">
-                        <% let wordConvTypes = ["PDF","PDFA","DOCXF","JPG","PNG","TXT","BMP","RTF","EPUB","FB2","HTML","DOCM","DOTM","ODT","OTT","DOTX"]%>
-                        <% for(let i=0; i < wordConvTypes.length; i++){%>
-                            <td name="convertingTypeButton" id="wordTo<%= wordConvTypes[i] %>" class="button hoar" data="<%= wordConvTypes[i].toLowerCase() %>"><%= wordConvTypes[i] %></td>
-                        <% } %>
-                    </tr>
-                    <tr class="typeButtonsRow disable" id="cellTypes">
-                        <% let cellConvTypes = ["PDF","PDFA","CSV","OTS","JPG","PNG","BMP","GIF","XLTX","XLTM","XLSM"]%>
-                        <% for(let i=0; i < cellConvTypes.length; i++){%>
-                            <td name="convertingTypeButton" id="cellTo<%= cellConvTypes[i] %>" class="button hoar" data="<%= cellConvTypes[i].toLowerCase() %>"><%= cellConvTypes[i] %></td>
-                        <% } %>
-                    </tr>
-                    <tr class="typeButtonsRow disable" id="slideTypes">
-                        <% let slideConvTypes = ["PDF","PDFA","JPG","PNG","BMP","GIF","ODP","OTP","POTX","POTM","PPTM"]%>
-                        <% for(let i=0; i < slideConvTypes.length; i++){%>
-                            <td name="convertingTypeButton" id="slideTo<%= slideConvTypes[i] %>" class="button hoar" data="<%= slideConvTypes[i].toLowerCase() %>"><%= slideConvTypes[i] %></td>
-                        <% } %>
-                    </tr>
+                    <tr class="typeButtonsRow" id="convTypes"></tr>
                 </tbody>
             </table>
             <br />

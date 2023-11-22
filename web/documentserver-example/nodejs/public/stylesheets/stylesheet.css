@@ -854,9 +854,6 @@ html {
     position: relative;
 }
 
-.typeButtonsRow.disable {
-    display: none;
-}
 
 .tableRow td:first-child {
     display: flex;

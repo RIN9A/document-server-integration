@@ -349,8 +349,11 @@ if (typeof jQuery != "undefined") {
 
         jq("#convertFileName").text(decodeURIComponent(fileName));
         jq("#convertFileName").addClass(type);
-        jq(".typeButtonsRow").addClass("disable");
-        jq(`#${type}Types`).removeClass("disable");
+        jq("#convTypes").empty();
+        let convExtensions = Formats.find(format => {return format.name == fileName.split('.').pop()}).convert;
+        convExtensions.forEach(ext => {
+            jq("#convTypes").append(jq(`<td name="convertingTypeButton" id="wordTo${ext}" class="button hoar" data="${ext}">${ext}</td>`));
+        });
         jq("#hiddenFileName").val(fileName);
         jq("#convertStep1").addClass("done");
         jq("#convertStep2").addClass("waiting");
