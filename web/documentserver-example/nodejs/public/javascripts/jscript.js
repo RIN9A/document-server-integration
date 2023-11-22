@@ -22,7 +22,7 @@ var directUrl;
 var Formats;
 
 window.onload = function () {
-    fetch(window.location.href+'formats')
+    fetch(window.location.origin+'/formats')
         .then((response) => response.json())
         .then((data) => {
             Formats = data;
