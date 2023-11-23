@@ -402,15 +402,17 @@ if (typeof jQuery != "undefined") {
                         jq("#convertPercent").text(`${response.step} %`);
                         convertFile();
                     } else {
-                        jq("#hiddenFileName").attr("data",response.filename);
                         jq("#convertPercent").text(`${response.step} %`);
                         jq("#convertStep2").removeClass("current").addClass("done");
                         jq("#downloadConverted").removeClass("disable");
                         if (response.error !== "FileTypeIsNotSupported") {
+                            jq("#hiddenFileName").attr("data",response.filename);
                             jq("#beginEditConverted").removeClass("disable");
                             jq("#beginViewConverted").removeClass("disable");
                             jq("#downloadConverted").attr("data","fromStorage");
                         } else {
+                            let newFilename = fileName.split('.').slice(0,-1).join('.')
+                            jq("#hiddenFileName").attr("data",response.filename.split("&filename=download").join(`&filename=${newFilename}`));
                             jq("#downloadConverted").attr("data","fromConverter");
                         }
                         jq("td[name='convertingTypeButton']").removeClass("disable");
