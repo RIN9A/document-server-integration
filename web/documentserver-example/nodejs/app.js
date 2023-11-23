@@ -367,27 +367,28 @@ app.post('/convert', (req, res) => { // define a handler for converting files
       if (status !== 200) throw new Error(`Conversion service returned status: ${status}`);
 
       // write a file with a new extension, but with the content from the origin file
-      if (fileUtility.getFileType(correctName) !== "other") {
+      if (fileUtility.getFileType(correctName) !== 'other') {
         fileSystem.writeFileSync(req.DocManager.storagePath(correctName), data);
       } else {
-        writeResult(newFileUri, result, "FileTypeIsNotSupported");
+        writeResult(newFileUri, result, 'FileTypeIsNotSupported');
         return;
       }
-      if (!("fileExt" in req.body)) fileSystem.unlinkSync(req.DocManager.storagePath(fileName)); // remove file with the origin extension
+      // remove file with the origin extension
+      if (!('fileExt' in req.body)) fileSystem.unlinkSync(req.DocManager.storagePath(fileName));
 
       const userAddress = req.DocManager.curUserHostAddress();
       const historyPath = req.DocManager.historyPath(fileName, userAddress, true);
       // get the history path to the file with a new extension
       const correctHistoryPath = req.DocManager.historyPath(correctName, userAddress, true);
 
-      if(!("fileExt" in req.body)){
+      if (!('fileExt' in req.body)) {
         fileSystem.renameSync(historyPath, correctHistoryPath); // change the previous history path
 
         fileSystem.renameSync(
           path.join(correctHistoryPath, `${fileName}.txt`),
           path.join(correctHistoryPath, `${correctName}.txt`),
         ); // change the name of the .txt file with document information
-      } else if (newFileType !== "other") {
+      } else if (newFileType !== 'other') {
         const user = users.getUser(req.query.userid);
 
         req.DocManager.saveFileData(correctName, user.id, user.name);
@@ -402,7 +403,7 @@ app.post('/convert', (req, res) => { // define a handler for converting files
 
   try {
     // check if the file with such an extension can be converted
-    if ((fileUtility.getConvertExtensions().indexOf(fileExt) !== -1) || ("fileExt" in req.body)) {
+    if ((fileUtility.getConvertExtensions().indexOf(fileExt) !== -1) || ('fileExt' in req.body)) {
       const storagePath = req.DocManager.storagePath(fileName);
       const stat = fileSystem.statSync(storagePath);
       let key = fileUri + stat.mtime.getTime();
