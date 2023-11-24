@@ -319,7 +319,8 @@ app.post('/convert', (req, res) => { // define a handler for converting files
   const lang = req.body.lang ? req.body.lang : null;
   const fileUri = req.DocManager.getDownloadUrl(fileName, true);
   const fileExt = fileUtility.getFileExtension(fileName, true);
-  const internalFileExt = req.body.fileExt ? req.body.fileExt : 'ooxml';
+  var internalFileExt = req.body.fileExt ? req.body.fileExt : 'ooxml';
+  if (req.body.forceConv) internalFileExt = req.body.forceConv;
   const response = res;
 
   const writeResult = function writeResult(filename, step, error) {
