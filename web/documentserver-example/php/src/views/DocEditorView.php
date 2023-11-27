@@ -279,6 +279,8 @@ final class DocEditorView extends View
             "config" => json_encode($config),
             "history" => $historyLayout,
             "usersForMentions" => json_encode($usersForMentions),
+            "serverVersion" => $configManager -> getVersion(),
+
             ];
     }
 }
