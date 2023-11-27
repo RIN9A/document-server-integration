@@ -64,6 +64,9 @@ public class EditorController {
     @Value("${files.docservice.languages}")
     private String langs;
 
+    @Value("${server.version}")
+    private String serverVersion;
+
     @Autowired
     private FileStoragePathBuilder storagePathBuilder;
 
@@ -157,6 +160,8 @@ public class EditorController {
 
         // get user data for mentions and add it to the model
         model.addAttribute("usersForMentions", getUserMentions(uid));
+        
+        model.addAttribute("serverVersion", serverVersion);
         return "editor.html";
     }
 
