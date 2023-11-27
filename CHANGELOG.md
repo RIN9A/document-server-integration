@@ -1,12 +1,9 @@
 # Change Log
 
 - nodejs: converting function on index page
-- link in referenceData
 - using a repo with a list of formats
-
-- ruby: convert after uploading only tagged formats
-- python: convert after uploading only tagged formats
-- php: convert after uploading only tagged formats
+- convert after uploading only tagged formats
+- link in referenceData
 - setUsers for region protection
 - onRequestOpen method
 - user avatar
