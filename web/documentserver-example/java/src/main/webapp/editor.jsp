@@ -1,6 +1,6 @@
 <%@page import="entities.FileModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page import="helpers.ConfigManager"%>
 <% FileModel Model = (FileModel) request.getAttribute("file"); %>
 
 <!DOCTYPE html>
@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="server-version" content="<%= ConfigManager.getProperty("version") %>" />
+
         <!--
         *
         * (c) Copyright Ascensio System SIA 2023
