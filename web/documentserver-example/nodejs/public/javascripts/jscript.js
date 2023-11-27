@@ -348,6 +348,7 @@ if (typeof jQuery != "undefined") {
         });
 
         jq("#convertFileName").text(decodeURIComponent(fileName));
+        jq("#convertFileName").removeClass("word slide cell");
         jq("#convertFileName").addClass(type);
         jq("#convTypes").empty();
         let convExtensions = Formats.find(format => {return format.name == fileName.split('.').pop()}).convert;
