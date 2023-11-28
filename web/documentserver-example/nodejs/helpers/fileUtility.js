@@ -61,7 +61,7 @@ fileUtility.getFileType = function getFileType(url) {
     if (supportedFormats[i].name === ext) return supportedFormats[i].type;
   }
 
-  return fileUtility.fileType.other; // the default file type is word
+  return fileUtility.fileType.other; // the default file type is other
 };
 
 fileUtility.fileType = {

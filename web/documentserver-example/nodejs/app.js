@@ -319,8 +319,9 @@ app.post('/convert', (req, res) => { // define a handler for converting files
   const lang = req.body.lang ? req.body.lang : null;
   const fileUri = req.DocManager.getDownloadUrl(fileName, true);
   const fileExt = fileUtility.getFileExtension(fileName, true);
-  var internalFileExt = req.body.fileExt ? req.body.fileExt : 'ooxml';
-  if (req.body.forceConv) internalFileExt = req.body.forceConv;
+  const internalFileExt = 'ooxml';
+  var convExt = req.body.fileExt ? req.body.fileExt : internalFileExt;
+  if (req.body.forceConv) convExt = req.body.forceConv;
   const response = res;
 
   const writeResult = function writeResult(filename, step, error) {
@@ -411,7 +412,7 @@ app.post('/convert', (req, res) => { // define a handler for converting files
 
       key = documentService.generateRevisionId(key); // get document key
       // get the url to the converted file
-      documentService.getConvertedUri(fileUri, fileExt, internalFileExt, key, true, callback, filePass, lang);
+      documentService.getConvertedUri(fileUri, fileExt, convExt, key, true, callback, filePass, lang);
     } else {
       // if the file with such an extension can't be converted, write the origin file to the result object
       writeResult(fileName, null, null);
@@ -775,6 +776,26 @@ app.post('/track', async (req, res) => { // define a handler for tracking file c
         if (isSubmitForm) {
           const uid = body.actions[0].userid;
           req.DocManager.saveFileData(correctName, uid, 'Filling Form', userAddress);
+
+          const { formsdataurl } = body;
+          if (formsdataurl) {
+            const formsdataName = req.DocManager.getCorrectName(
+              `${fileUtility.getFileName(correctName, true)}.txt`,
+              userAddress,
+            );
+            // get the path to the file with forms data
+            const formsdataPath = req.DocManager.storagePath(formsdataName, userAddress);
+            const formsdata = await urllib.request(formsdataurl, { method: 'GET' });
+            const statusFormsdata = formsdata.status;
+            const dataFormsdata = formsdata.data;
+            if (statusFormsdata === 200) {
+              fileSystem.writeFileSync(formsdataPath, dataFormsdata); // write the forms data
+            } else {
+              emitWarning(`Document editing service returned status: ${statusFormsdata}`);
+            }
+          } else {
+            emitWarning('Document editing service do not returned formsdataurl');
+          }
         }
       } catch (ex) {
         response.write('{"error":1}');

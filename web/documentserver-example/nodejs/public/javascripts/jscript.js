@@ -366,6 +366,7 @@ if (typeof jQuery != "undefined") {
         });
 
         jq("#convertFileName").text(decodeURIComponent(fileName));
+        jq("#convertFileName").removeClass("word slide cell");
         jq("#convertFileName").addClass(type);
         jq("#convTypes").empty();
         let convExtensions = Formats.find(format => {return format.name == fileName.split('.').pop()}).convert;
@@ -384,6 +385,7 @@ if (typeof jQuery != "undefined") {
         jq(`#${id}`).addClass("orange");
         jq("td[name='convertingTypeButton']").addClass("disable");
         jq("#convertStep2").removeClass("waiting").removeClass("done").addClass("current");
+        jq("#convertStep2").text('2. File conversion');
         jq("#convert-descr").removeClass("disable");
         jq("#convertPercent").text("0 %");
         jq("#hiddenFileName").attr("placeholder",fileExt);
@@ -422,6 +424,7 @@ if (typeof jQuery != "undefined") {
                     } else {
                         jq("#convertPercent").text(`${response.step} %`);
                         jq("#convertStep2").removeClass("current").addClass("done");
+                        jq("#convertStep2").text(`2. File conversion to ${fileExt}`);
                         jq("#downloadConverted").removeClass("disable");
                         if (response.error !== "FileTypeIsNotSupported") {
                             jq("#hiddenFileName").attr("data",response.filename);
@@ -433,7 +436,7 @@ if (typeof jQuery != "undefined") {
                             jq("#hiddenFileName").attr("data",response.filename.split("&filename=download").join(`&filename=${newFilename}`));
                             jq("#downloadConverted").attr("data","fromConverter");
                         }
-                        jq("td[name='convertingTypeButton']").removeClass("disable");
+                        jq("td[name='convertingTypeButton']").removeClass("disable orange");
                     }
                 }
             });
