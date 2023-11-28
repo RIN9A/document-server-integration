@@ -340,7 +340,9 @@ def edit(request):
         'dataInsertImage': json.dumps(dataInsertImage)[1 : len(json.dumps(dataInsertImage)) - 1],  # the image which will be inserted into the document
         'dataCompareFile': dataCompareFile,  # document which will be compared with the current document
         'dataMailMergeRecipients': json.dumps(dataMailMergeRecipients),  # recipient data for mail merging
-        'usersForMentions': json.dumps(usersForMentions) if user.id !='uid-0' else None
+        'usersForMentions': json.dumps(usersForMentions) if user.id !='uid-0' else None,
+        'serverVersion': config_manager.getVersion()
+
     }
     return render(request, 'editor.html', context)  # execute the "editor.html" template with context data
 
