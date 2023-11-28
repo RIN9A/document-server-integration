@@ -1026,6 +1026,8 @@ app.get('/editor', (req, res) => { // define a handler for editing document
       },
       usersForMentions: user.id !== 'uid-0' ? users.getUsersForMentions(user.id) : null,
       usersForProtect: user.id !== 'uid-0' ? users.getUsersForProtect(user.id) : null,
+      serverVersion: config.get('version'),
+
     };
 
     if (cfgSignatureEnable) {
